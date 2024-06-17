@@ -13,12 +13,67 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Event{
-  id String @id @default(uuid())
-  name String
+//Evento
+model Event {
+  id          String   @id @default(uuid())
+  name        String
   description String
-  date DateTime
-  price Float
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  date        DateTime
+  price       Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  Spot        Spot[]
+}
+
+//Lugar
+model Spot {
+  id                 String               @id @default(uuid())
+  name               String
+  status             SpotStatus
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  eventId            String
+  Event              Event                @relation(fields: [eventId], references: [id])
+  Ticket             Ticket?
+  ReservationHistory ReservationHistory[]
+}
+
+enum SpotStatus {
+  available
+  reserved
+}
+
+//Ingresso
+model Ticket {
+  id         String     @id @default(uuid())
+  email      String
+  ticketKind TicketKind
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  spotId     String
+  Spot       Spot       @relation(fields: [spotId], references: [id])
+
+  @@unique([spotId])
+}
+
+enum TicketKind {
+  full
+  half
+}
+
+//Histórico de reservas
+model ReservationHistory {
+  id           String       @id @default(uuid())
+  email        String
+  ticketKind   TicketKind
+  ticketStatus TicketStatus
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  spotId       String
+  Spot         Spot         @relation(fields: [spotId], references: [id])
+}
+
+enum TicketStatus {
+  reserver
+  cancelled
 }
