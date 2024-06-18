@@ -48,3 +48,14 @@ Content-Type: application/json
 {
   "name": "B3"
 }
+
+###
+# @name reserveSpots
+POST http://localhost:3000/events/{{eventId}}/reserve
+Content-Type: application/json
+
+{
+  "spots": ["A2", "A3"],
+  "ticket_kind": "full",
+  "email": "teste@email.com"
+}
