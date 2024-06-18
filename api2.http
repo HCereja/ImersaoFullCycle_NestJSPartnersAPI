@@ -53,9 +53,10 @@ Content-Type: application/json
 # @name reserveSpots
 POST http://localhost:3001/eventos/{{eventId}}/reserva
 Content-Type: application/json
+X-Api-Token: 321
 
 {
-  "spots": ["A2", "A3"],
+  "spots": ["A1"],
   "ticket_kind": "full",
   "email": "teste@email.com"
 }
