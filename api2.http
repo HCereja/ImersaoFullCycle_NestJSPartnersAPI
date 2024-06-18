@@ -1,9 +1,9 @@
 # @name getEvents
-GET http://localhost:3000/events
+GET http://localhost:3001/eventos
 
 ###
 # @name createEvent
-POST http://localhost:3000/events
+POST http://localhost:3001/eventos
 Content-Type: application/json
 
 {
@@ -19,11 +19,11 @@ Content-Type: application/json
 
 ###
 # @name getSingleEvent
-GET http://localhost:3000/events/{{eventId}}
+GET http://localhost:3001/eventos/{{eventId}}
 
 ###
 # @name updateEvent
-PATCH http://localhost:3000/events/{{eventId}}
+PATCH http://localhost:3001/eventos/{{eventId}}
 Content-Type: application/json
 
 {
@@ -34,24 +34,24 @@ Content-Type: application/json
 
 ###
 # @name deleteEvent
-DELETE http://localhost:3000/events/{{eventId}}
+DELETE http://localhost:3001/eventos/{{eventId}}
 
 ###
 # @name getSpots
-GET http://localhost:3000/events/{{eventId}}/spots
+GET http://localhost:3001/eventos/{{eventId}}/lugares
 
 ###
 # @name createSpot
-POST http://localhost:3000/events/{{eventId}}/spots
+POST http://localhost:3001/eventos/{{eventId}}/lugares
 Content-Type: application/json
 
 {
-  "name": "B3"
+  "name": "A3"
 }
 
 ###
 # @name reserveSpots
-POST http://localhost:3000/events/{{eventId}}/reserve
+POST http://localhost:3001/eventos/{{eventId}}/reserva
 Content-Type: application/json
 
 {

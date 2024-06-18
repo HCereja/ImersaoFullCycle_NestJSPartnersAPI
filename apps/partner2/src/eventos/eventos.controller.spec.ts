@@ -1,17 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { EventsController } from './events.controller';
+import { EventosController } from './eventos.controller';
 import { EventsService } from '@app/core/events/events.service';
 
 describe('EventsController', () => {
-  let controller: EventsController;
+  let controller: EventosController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [EventsController],
+      controllers: [EventosController],
       providers: [EventsService],
     }).compile();
 
-    controller = module.get<EventsController>(EventsController);
+    controller = module.get<EventosController>(EventosController);
   });
 
   it('should be defined', () => {
